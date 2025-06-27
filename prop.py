@@ -69,25 +69,25 @@ st.dataframe(df_points[["Traders", "Funded", "Expense (USD)", "Net Month 1 (USD)
 # Mechanics & Thresholds
 st.markdown("""
 **Mechanics & Thresholds**  
-- Challenge Fee: 39.60 (USD) — fronted by our pool  
-- Points Needed: 500 — 1 pt = 39.60 (USD) / 500 ≈ 0.0792 (USD) pool value  
-- Pts per 1 000 (USD) Volume: 8.80 (USD) ÷ 0.0792 (USD) ≈ 111 pts  
-- Volume Required: 500 pts ÷ 111 ≈ 4 500 (USD)  
+- Challenge Fee: \$39.60 (fronted by our pool)  
+- Points Needed: 500 ⇒ 1 pt = \$39.60/500 ≈ \$0.0792 of pool value  
+- Pts per \$1 000 Volume: \$8.80 ÷ \$0.0792 ≈ 111 pts  
+- Volume Required: 500 ÷ 111 ≈ 4 500 USD  
 """)
 
 # Core Unit Economics
 st.markdown("**Core Unit Economics**")
 core_table = pd.DataFrame({
-    "Flow Volume (USD)": ["1 000"],
-    "2% Spread (USD)": ["20.00"],
-    "0.7% Fee (capped at USD)": ["2.00"],
-    "Gross per 1 000 (USD)": ["22.00"],
-    "Tech & Proc (20%) (USD)": ["4.40"],
-    "Ops (40%) (USD)": ["8.80"],
-    "Pool (40%) (USD)": ["8.80"]
+    "Flow Volume": ["\$1 000"],
+    "2% Spread": ["\$20.00"],
+    "0.7% Fee (cap \$2)": ["\$2.00"],
+    "Gross/1 000": ["\$22.00"],
+    "Tech & Proc (20%)": ["\$4.40"],
+    "Ops (40%)": ["\$8.80"],
+    "Pool (40%)": ["\$8.80"]
 })
 st.table(core_table)
-st.markdown("Whenever 1 000 (USD) moves through your platform, 8.80 (USD) credits the Points Pool.")
+st.markdown("Whenever \$1 000 moves through your platform, \$8.80 credits the Points Pool.")
 
 # Table 2: Two-Month Cohort Outcomes (Points Path Only)
 st.subheader("Table 2: Two-Month Cohort Outcomes (Points Path Only)")
@@ -95,24 +95,28 @@ st.dataframe(df_points[["Traders", "Funded", "Expense (USD)", "Net Month 1 (USD)
                         "Withdrawers Month 2", "Net Month 2 (USD)", "Total Net (USD)", "ROI Combined (%)"]])
 
 # Table 3: Direct-Purchase Path (First-Month)
+
 st.subheader("Table 3: Direct-Purchase Path (First-Month)")
-st.markdown("Traders only withdraw 80% of profit — i.e. 400 (USD) of a 500 (USD) gain. No profit-share on this path.")
+# Direct-Purchase Core Mechanics table
+st.markdown("Traders only withdraw 80% of profit (i.e. \$400 of a \$500 gain). No profit-share on this path.")
 st.table(pd.DataFrame({
-    "Item": ["2% Spread on 400 (USD) withdrawn", "0.7% tx-fee — capped at 2 (USD)", "→ Net to Platform (USD)"],
-    "Amount": ["8.00", "2.00", "10.00"]
+    "Item": ["2% Spread on \$400 withdrawn", "0.7% tx-fee (cap \$2)", "→ Net to Platform"],
+    "Amount": ["\$8.00", "\$2.00", "\$10.00"]
 }))
+
 st.dataframe(df_direct[["Traders", "Funded", "Net Direct Month 1 (USD)"]])
 
 # Table 4: Combined Two-Path First-Month Projection
 combined = pd.DataFrame({
     "Traders": traders,
-    "Points Path Net (USD)": df_points["Net Month 1 (USD)"],
-    "Direct Path Net (USD)": df_direct["Net Direct Month 1 (USD)"],
-    "Total Net Combined (USD)": df_points["Net Month 1 (USD)"] + df_direct["Net Direct Month 1 (USD)"]
+    "Points Path Net": df_points["Net Month 1 (USD)"],
+    "Direct Path Net": df_direct["Net Direct Month 1 (USD)"],
+    "Total Net Combined": df_points["Net Month 1 (USD)"] + df_direct["Net Direct Month 1 (USD)"]
 })
 st.subheader("Table 4: Combined Two-Path First-Month Projection")
 st.dataframe(combined)
 
 # Visualizations
 st.subheader("Revenue Comparison")
-st.bar_chart(combined.set_index("Traders")[["Points Path Net (USD)", "Direct Path Net (USD)"]])
+st.bar_chart(combined.set_index("Traders")[["Points Path Net", "Direct Path Net"]])
+
