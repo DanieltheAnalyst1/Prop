@@ -69,7 +69,7 @@ st.dataframe(df_points[["Traders", "Funded", "Expense (USD)", "Net Month 1 (USD)
 # Mechanics & Thresholds
 st.markdown("""
 **Mechanics & Thresholds**  
-- Challenge Fee: \$39.60 (fronted by our pool)  
+- Challenge Fee (–10%): \$39.60 (fronted by our pool)  
 - Points Needed: 500 ⇒ 1 pt = \$39.60/500 ≈ \$0.0792 of pool value  
 - Pts per \$1 000 Volume: \$8.80 ÷ \$0.0792 ≈ 111 pts  
 - Volume Required: 500 ÷ 111 ≈ 4 500 USD  
