@@ -87,7 +87,7 @@ core_table = pd.DataFrame({
     "Pool (40%)": ["\$8.80"]
 })
 st.table(core_table)
-st.markdown("Whenever \$1 000 moves through your platform, \$8.80 credits the Points Pool.")
+st.markdown("Whenever \$1 000 moves through our platform, \$8.80 credits the Points Pool.")
 
 # Table 2: Two-Month Cohort Outcomes (Points Path Only)
 st.subheader("Table 2: Two-Month Cohort Outcomes (Points Path Only)")
